@@ -8,11 +8,14 @@ import Movie from '../Models/movie';
  * @param {string[]} unsanitizedArray
  * @returns {string[]}
  */
-function SanitizeArray(unsanitizedArray: string[]): string[]
+function SanitizeArray(unsanitizedArray: string | null): string[] 
 {
+    if (!unsanitizedArray) {
+        return [];
+    }
+    let arrayElements = unsanitizedArray.split(",");
     let sanitizedArray: string[] = Array<string>();
-    for (const unsanitizedString of unsanitizedArray) 
-    {
+    for (const unsanitizedString of arrayElements) {
         sanitizedArray.push(unsanitizedString.trim());
     }
     return sanitizedArray;
