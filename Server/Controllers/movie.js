@@ -115,7 +115,7 @@ function DeleteMovie(req, res, next) {
         let id = req.params.id;
         movie_1.default.deleteOne({ _id: id })
             .then(function () {
-            res.json(id);
+            res.status(200).json({ success: true, msg: "Movie Deleted Successfully", data: id });
         })
             .catch(function (err) {
             console.error(err);

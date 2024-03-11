@@ -205,7 +205,7 @@ export function DeleteMovie(req: Request, res: Response, next: NextFunction): vo
         Movie.deleteOne({_id: id})
         .then(function()
         {
-            res.json(id);
+            res.status(200).json({success: true, msg: "Movie Deleted Successfully", data: id});
         })
         .catch(function(err)
         {

@@ -10,25 +10,25 @@ router.get('/', (req, res, next) =>
   DisplayMovieList(req, res, next);
 });
 
-/* GET /api/movies/:id - display a movie by id */
+/* GET /api/:id - display a movie by id */
 router.get('/:id', (req, res, next) => 
 {
   DisplayMovieByID(req, res, next);
 });
 
-/* POST /api/movies - add a new movie */
+/* POST /api/ - add a new movie */
 router.post('/', (req, res, next) => 
 {
   AddMovie(req, res, next);
 });
 
-/* PUT /api/movies/:id - update a movie by id */
+/* PUT /api/:id - update a movie by id */
 router.put('/:id', (req, res, next) => 
 {
   UpdateMovie(req, res, next);
 });
 
-/* GET /api/movies/:id - delete a movie by id */
+/* GET /api/:id - delete a movie by id */
 router.delete('/:id', (req, res, next) => 
 {
   DeleteMovie(req, res, next);
