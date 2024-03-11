@@ -11,7 +11,7 @@ import Movie from '../Models/movie';
 function SanitizeArray(unsanitizedArray: string | null): string[] 
 {
     if (!unsanitizedArray) {
-        return [];
+        return [""];
     }
     let arrayElements = unsanitizedArray.split(",");
     let sanitizedArray: string[] = Array<string>();
