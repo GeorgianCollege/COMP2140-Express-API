@@ -6,8 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteMovie = exports.UpdateMovie = exports.AddMovie = exports.DisplayMovieByID = exports.DisplayMovieList = void 0;
 const movie_1 = __importDefault(require("../Models/movie"));
 function SanitizeArray(unsanitizedArray) {
+    if (!unsanitizedArray) {
+        return [""];
+    }
+    let arrayElements = unsanitizedArray.split(",");
     let sanitizedArray = Array();
-    for (const unsanitizedString of unsanitizedArray) {
+    for (const unsanitizedString of arrayElements) {
         sanitizedArray.push(unsanitizedString.trim());
     }
     return sanitizedArray;
@@ -40,10 +44,10 @@ function DisplayMovieByID(req, res, next) {
 exports.DisplayMovieByID = DisplayMovieByID;
 function AddMovie(req, res, next) {
     try {
-        let genres = SanitizeArray(req.body.genres.split(","));
-        let directors = SanitizeArray(req.body.directors.split(","));
-        let writers = SanitizeArray(req.body.writers.split(","));
-        let actors = SanitizeArray(req.body.actors.split(","));
+        let genres = SanitizeArray(req.body.genres);
+        let directors = SanitizeArray(req.body.directors);
+        let writers = SanitizeArray(req.body.writers);
+        let actors = SanitizeArray(req.body.actors);
         let movie = new movie_1.default({
             movieID: req.body.movieID,
             title: req.body.title,
@@ -74,10 +78,10 @@ exports.AddMovie = AddMovie;
 function UpdateMovie(req, res, next) {
     try {
         let id = req.params.id;
-        let genres = SanitizeArray(req.body.genres.split(","));
-        let directors = SanitizeArray(req.body.directors.split(","));
-        let writers = SanitizeArray(req.body.writers.split(","));
-        let actors = SanitizeArray(req.body.actors.split(","));
+        let genres = SanitizeArray(req.body.genres);
+        let directors = SanitizeArray(req.body.directors);
+        let writers = SanitizeArray(req.body.writers);
+        let actors = SanitizeArray(req.body.actors);
         let movieToUpdate = new movie_1.default({
             _id: id,
             movieID: req.body.movieID,

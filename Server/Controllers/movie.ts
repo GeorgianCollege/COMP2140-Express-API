@@ -15,7 +15,8 @@ function SanitizeArray(unsanitizedArray: string | null): string[]
     }
     let arrayElements = unsanitizedArray.split(",");
     let sanitizedArray: string[] = Array<string>();
-    for (const unsanitizedString of arrayElements) {
+    for (const unsanitizedString of arrayElements) 
+    {
         sanitizedArray.push(unsanitizedString.trim());
     }
     return sanitizedArray;
@@ -90,10 +91,10 @@ export function AddMovie(req: Request, res: Response, next: NextFunction): void
     try
     {
         // Sanitize the array
-        let genres = SanitizeArray((req.body.genres as string).split(","));
-        let directors = SanitizeArray((req.body.directors as string).split(","));
-        let writers = SanitizeArray((req.body.writers as string).split(","));
-        let actors = SanitizeArray((req.body.actors as string).split(","));
+        let genres = SanitizeArray((req.body.genres as string));
+        let directors = SanitizeArray((req.body.directors as string));
+        let writers = SanitizeArray((req.body.writers as string));
+        let actors = SanitizeArray((req.body.actors as string));
 
         // Instantiate a new Movie
         let movie = new Movie({
@@ -145,10 +146,10 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
         let id = req.params.id;
         
         // Sanitize the array
-        let genres = SanitizeArray((req.body.genres as string).split(","));
-        let directors = SanitizeArray((req.body.directors as string).split(","));
-        let writers = SanitizeArray((req.body.writers as string).split(","));
-        let actors = SanitizeArray((req.body.actors as string).split(","));
+        let genres = SanitizeArray((req.body.genres as string));
+        let directors = SanitizeArray((req.body.directors as string));
+        let writers = SanitizeArray((req.body.writers as string));
+        let actors = SanitizeArray((req.body.actors as string));
 
         // Instantiate a new Movie Object
         let movieToUpdate = new Movie({
