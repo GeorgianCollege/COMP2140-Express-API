@@ -37,9 +37,9 @@ export function ProcessLogin(req: Request, res: Response, next: NextFunction): v
 
             return res.json({success: true, msg: 'User Logged In Successfully!', data: {
                 id: user._id,
-                displayName: user.displayName,
                 username: user.username,
-                emailAddress: user.emailAddress
+                emailAddress: user.emailAddress,
+                displayName: user.displayName
             }, token: authToken});
         });
         return;
@@ -52,8 +52,8 @@ export function ProcessRegister(req: Request, res: Response, next: NextFunction)
     let newUser = new User
     ({
         username: req.body.username,
-        EmailAddress: req.body.emailAddress,
-        DisplayName: req.body.firstName + " " + req.body.lastName
+        emailAddress: req.body.emailAddress,
+        displayName: req.body.firstName + " " + req.body.lastName
     });
 
     User.register(newUser, req.body.password, (err) =>

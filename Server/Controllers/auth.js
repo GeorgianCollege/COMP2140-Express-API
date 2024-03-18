@@ -24,9 +24,9 @@ function ProcessLogin(req, res, next) {
             const authToken = (0, index_1.GenerateToken)(user);
             return res.json({ success: true, msg: 'User Logged In Successfully!', data: {
                     id: user._id,
-                    displayName: user.displayName,
                     username: user.username,
-                    emailAddress: user.emailAddress
+                    emailAddress: user.emailAddress,
+                    displayName: user.displayName
                 }, token: authToken });
         });
         return;
@@ -36,8 +36,8 @@ exports.ProcessLogin = ProcessLogin;
 function ProcessRegister(req, res, next) {
     let newUser = new user_1.default({
         username: req.body.username,
-        EmailAddress: req.body.emailAddress,
-        DisplayName: req.body.firstName + " " + req.body.lastName
+        emailAddress: req.body.emailAddress,
+        displayName: req.body.firstName + " " + req.body.lastName
     });
     user_1.default.register(newUser, req.body.password, (err) => {
         if (err) {
