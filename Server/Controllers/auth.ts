@@ -35,7 +35,7 @@ export function ProcessLogin(req: Request, res: Response, next: NextFunction): v
 
             const authToken = GenerateToken(user);
 
-            return res.json({success: true, msg: 'User Logged In Successfully!', user: {
+            return res.json({success: true, msg: 'User Logged In Successfully!', data: {
                 id: user._id,
                 displayName: user.displayName,
                 username: user.username,
@@ -67,7 +67,7 @@ export function ProcessRegister(req: Request, res: Response, next: NextFunction)
             console.error(err.name); // other error
             return res.json({success: false, msg: 'ERROR: Registration Failure'});
         }
-        return res.json({success: true, msg: 'User Registered Successfully!'});
+        return res.json({success: true, msg: 'User Registered Successfully!', data: newUser});
     });
 }
 
@@ -78,5 +78,5 @@ export function ProcessLogout(req: Request, res: Response, next: NextFunction): 
         // Note: the client will need remove the token from local storage - the server cannot expire the token
     });
 
-    res.json({success: true, msg: 'User Logged out Successfully!'});
+    res.json({success: true, msg: 'User Logged out Successfully!', data: req.user});
 }

@@ -22,7 +22,7 @@ function ProcessLogin(req, res, next) {
                 res.end(err);
             }
             const authToken = (0, index_1.GenerateToken)(user);
-            return res.json({ success: true, msg: 'User Logged In Successfully!', user: {
+            return res.json({ success: true, msg: 'User Logged In Successfully!', data: {
                     id: user._id,
                     displayName: user.displayName,
                     username: user.username,
@@ -47,7 +47,7 @@ function ProcessRegister(req, res, next) {
             console.error(err.name);
             return res.json({ success: false, msg: 'ERROR: Registration Failure' });
         }
-        return res.json({ success: true, msg: 'User Registered Successfully!' });
+        return res.json({ success: true, msg: 'User Registered Successfully!', data: newUser });
     });
 }
 exports.ProcessRegister = ProcessRegister;
@@ -55,7 +55,7 @@ function ProcessLogout(req, res, next) {
     req.logout(() => {
         console.log("User Logged Out");
     });
-    res.json({ success: true, msg: 'User Logged out Successfully!' });
+    res.json({ success: true, msg: 'User Logged out Successfully!', data: req.user });
 }
 exports.ProcessLogout = ProcessLogout;
 //# sourceMappingURL=auth.js.map
