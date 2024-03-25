@@ -105,6 +105,6 @@ passport.use(strategy);
 app.use('/api/', authRouter);
 
 // protected routes
-app.use('/api/', passport.authenticate('jwt', {session: false}), indexRouter);
+app.use('/api/', /* passport.authenticate('jwt', {session: false}),*/ indexRouter);
 
 export default app;

@@ -63,6 +63,6 @@ let strategy = new JWTStrategy(jwtOptions, function (jwt_payload, done) {
 });
 passport_1.default.use(strategy);
 app.use('/api/', auth_1.default);
-app.use('/api/', passport_1.default.authenticate('jwt', { session: false }), index_1.default);
+app.use('/api/', index_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map
